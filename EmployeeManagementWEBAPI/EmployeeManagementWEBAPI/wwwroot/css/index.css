@@ -1,0 +1,54 @@
+﻿input[type='submit'], button, [aria-label]{
+    cursor: pointer;
+}
+
+#editDiv {
+    display: none;
+}
+
+#addDiv {
+    display: none;
+}
+
+#displayAllTable {
+    font-family: Arial, sans-serif;
+    width: 1000px;
+    text-align: center;
+    border-collapse: collapse;
+    border-style:solid;
+}
+
+#displayAllTable td{
+    border: 1px solid;
+    padding: 2px;
+}
+
+
+.inputTable {
+    font-family: Arial, sans-serif;
+    width: 500px;
+    border: 1px dashed;
+}
+
+.inputTable td {
+     padding: 4px;
+    }
+
+th {
+    background-color: #0066CC;
+    color: white;
+}
+
+button {
+    font-family: Arial, sans-serif;
+    font-size:15px;
+    padding: 3px;
+}
+
+body {
+    background-image: url(/image/background.jpg) ;
+}
+
+.error {
+    color: red;
+}
