@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Management</title>
+    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="/css/index.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/js/additional-methods.min.js"></script>
+    <script type="text/javascript" src="/js/index.js"></script>
+</head>
+<body>
+    <h1>Employee Management</h1>
+
+    First Name:<input type="text" id="search-firstName" />
+    Department:<select id="search-department">
+        <option value=""></option>
+        <option value="developer">developer</option>
+        <option value="tester">tester</option>
+        <option value="manager">manager</option>
+    </select>
+    Gender:<select id="search-gender">
+        <option value=""></option>
+        <option value="F">F</option>
+        <option value="M">M</option>
+    </select>
+    <button onclick="filterEmployee()">Filter</button> ||
+    <a href="javascript:void(0)" onclick="reloadTable()"> Back To List</a>
+    <br>
+    <button onclick="addDivDisplay()">create new</button>
+
+    <!--all employee-->
+    <table id="displayAllTable">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Birth</th>
+            <th>Department</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody id="employees"></tbody>
+    </table>
+
+    <!--edit employee-->
+    <div id="editDiv">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" method="put" onsubmit="saveEditEmployee()">
+            <input type="hidden" id="edit-id">
+            <table class="inputTable">
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" id="edit-firstName" /></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td> <input type="text" id="edit-lastName" /></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        <select id="edit-gender">
+                            <option value="F">F</option>
+                            <option value="M">M</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Birth:</td>
+                    <td><input type="date" id="edit-birth" /></td>
+                </tr>
+                <tr>
+                    <td>Department:</td>
+                    <td>
+                        <select id="edit-department">
+                            <option value=""></option>
+                            <option value="developer">developer</option>
+                            <option value="tester">tester</option>
+                            <option value="manager">manager</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><input type="text" id="edit-address" /></td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><input type="text" id="edit-phone" /></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" id="edit-email" /></td>
+                </tr>
+            </table>
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <!--add employee-->
+    <div id="addDiv">
+        <h3>Add</h3>
+        <form action="javascript:void(0);" method="POST" onsubmit="addEmployee()" id="addForm">
+            <table class="inputTable">
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" id="add-firstName" placeholder="New First Name" name="firstName"/></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" id="add-lastName" placeholder="New Last Name" name="lastName"/></td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        <select id="add-gender">
+                            <option value="F">F</option>
+                            <option value="M">M</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Birth:</td>
+                    <td><input type="date" id="add-birth" /></td>
+                </tr>
+                <tr>
+                    <td>Department:</td>
+                    <td>
+                        <select id="add-department">
+                            <option value=""></option>
+                            <option value="developer">developer</option>
+                            <option value="tester">tester</option>
+                            <option value="manager">manager</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><input type="text" id="add-address" placeholder="New Address" /></td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><input type="text" id="add-phone" placeholder="New Phone" name="phone"/></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" id="add-email" placeholder="New Email" name="email"/></td>
+                </tr>
+            </table>
+            <input type="submit" value="Add">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+</body>
+</html>
